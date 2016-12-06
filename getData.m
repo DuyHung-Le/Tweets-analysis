@@ -1,13 +1,13 @@
 function data = getData(fileName)
+% getData take a file as an input and read all data from that file,
+% do a little bit processing and return a cell containing structured data.
 
-    % Comment: Try textscan in the future
-    data = readtable(fileName,'ReadVariableNames', false); 
-    % ('ReadVariableNames', false) indicates that the file has no variable 
-    % names as column heading
+    data = readtable(fileName,'ReadVariableNames', false);
+    % ('ReadVariableNames', false) indicates that the file has no column heading
 
     % Convert the table to a cell
     data = table2cell(data);
-    
+
     % Convert the cell to matrix of strings in order to process more easily
     X_string = string(data);
 
@@ -20,7 +20,7 @@ function data = getData(fileName)
             data = [data; data(i,3) 0 0];
         end
     end
-    
+
     % We need only the first column
     data = data(:,1);
 end

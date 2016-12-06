@@ -1,12 +1,12 @@
 function genVocab(allTweets)
-    vocabFile = 'vocab.txt';
-    if not(exist(vocabFile, 'file'))
+    vocabFile = 'data/vocab.txt';
+    if (exist(vocabFile, 'file'))
         fprintf('\nNo vocabulary list exists. Generating a new vocabulary list from data...\n');
         disp('Number of tweets have been processed: ');
         FREQ_LIMIT = 1;
         vocab = cell(0);
         tokens = containers.Map;
-        
+
         for i=1:length(allTweets)
             if mod(i, 100) == 0
                 temp = sprintf('%d...', i);
@@ -14,7 +14,7 @@ function genVocab(allTweets)
             end
             tweet = allTweets{i};
 
-            % Now we import the code from lab exercise
+            % Now we copy the code from SVM lab exercise
             % remove case-sensitive
             tweet = lower(tweet);
 
@@ -79,6 +79,25 @@ function genVocab(allTweets)
                 vocab = [vocab ; ks{i}];
             end
         end
+        % ========================== Stop-word removal ========================
+        % Remove stop word from the vocab list. To do this, we specified a list
+        % that we considered stop words, including Determiners (like the, a, an),
+        % Coordinating conjunctions (for, an, nor, ...) and Prepositions (in,
+        % under,...). Be careful that those words in vocab list are stemmed
+        % words, for example another would be anoth. Therefore, to be sure that
+        % we are removing the right form of words, first time generating vocab
+        % list we did not perform this step. Then for the second time, we called
+        % processTweet with all the stop words to get the right form in vocab
+        % list and store them to a file.
+        % The following code will take all the stemmed stop-words and remove
+        % them from the vocab list
+        fid = fopen('data/stemmed_stop_words.txt', 'rt');
+        content = textscan(fid,'%s');
+        stopWords = content{1};
+        fclose(fid);
+        remove(vocab, stopWords);
+
+        % Finish removing stop word, now sort our vocab list
         vocab = sort(vocab);
 
 
@@ -90,7 +109,7 @@ function genVocab(allTweets)
                 fprintf(fileID,'%d\t%s',i,vocab{i});
             end
         end
-        
+
         fprintf('\nVocabulary successfully created!\n');
     else
         fprintf('\nGenerating vocabulary list from data...');
