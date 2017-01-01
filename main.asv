@@ -51,7 +51,7 @@ yNorm = sqrt(sum(y.^2,2));
 zeroIndices = find(yNorm == 0);
 y(zeroIndices,:) = []; % Remove from TF_IDF matrix
 allTweets(zeroIndices) = [];
-save('data4kmeans.mat','allTweets', 'y');
+save('data4kmeans.mat','tweets', 'y');
 fprintf('\nDone\n');
 
 % Apply k-means for noise removal
@@ -82,14 +82,12 @@ end
 figure;
 plot(kMin:kMax, distance);
 
-% Some may need to modify the number of cluster below
 idx = kmeans(concensus, 5, 'Distance', 'cosine');
-fprintf('Done\n');
+fprintf(
 
 % Sample code for finding the most popular word in each cluster
 group1 = find(idx == 1);
-tweetGroup1 = allTweets(group1);
-getPopularWordFromTweets(tweetGroup1)
+tweetGroup1 = 
 
 
 

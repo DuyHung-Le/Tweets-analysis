@@ -34,7 +34,7 @@ function [class,type]=dbscan(x,k,Eps)
 
 [m,n]=size(x);
 
-if nargin<3 | isempty(Eps)
+if nargin<3 || isempty(Eps)
    [Eps]=epsilon(x,k);
 end
 
@@ -43,7 +43,7 @@ x=[[1:m]' x];
 type=zeros(1,m);
 no=1;
 touched=zeros(m,1);
-
+class = zeros(m,1);
 for i=1:m
     if touched(i)==0;
        ob=x(i,:);
@@ -134,8 +134,13 @@ function [D]=dist(i,x)
 % D - Euclidean distance (m,1)
 
 %--------------------------------------------------------------------------
-%
 %                        YOUR CODE IS HERE
-%
-%--------------------------------------------------------------------------
+
+[m,n]=size(x);
+D=sqrt(sum((((ones(m,1)*i)-x).^2)'));
+
+if n==1
+   D=abs((ones(m,1)*i-x))';
 end
+
+%--------------------------------------------------------------------------

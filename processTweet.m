@@ -48,8 +48,8 @@ tweet = regexprep(tweet, '[$]+', 'dollar');
 
 % ========================== Tokenize tweet ===========================
 
-% Output the tweet to screen as well
-fprintf('\n==== Processed tweet ====\n\n');
+% % Output the tweet to screen as well
+% fprintf('\n==== Processed tweet ====\n\n');
 
 % Process file
 l = 0;
@@ -107,17 +107,17 @@ while ~isempty(tweet)
     % =============================================================
 
 
-    % Print to screen, ensuring that the output lines are not too long
-    if (l + length(str) + 1) > 78
-        fprintf('\n');
-        l = 0;
-    end
-    fprintf('%s ', str);
-    l = l + length(str) + 1;
+%     % Print to screen, ensuring that the output lines are not too long
+%     if (l + length(str) + 1) > 78
+%         fprintf('\n');
+%         l = 0;
+%     end
+%     fprintf('%s ', str);
+%     l = l + length(str) + 1;
 
 end
 
-% Print footer
-fprintf('\n\n=========================\n');
+% % Print footer
+% fprintf('\n\n=========================\n');
 
 end

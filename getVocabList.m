@@ -9,7 +9,7 @@ function vocabList = getVocabList()
 fid = fopen('data/vocab.txt');
 
 % Store all dictionary words in cell array vocab{}
-n = 2021;  % Total number of words in the dictionary
+n = 2003;  % Total number of words in the dictionary
 
 % For ease of implementation, we use a struct to map the strings => integers
 % In practice, you'll want to use some form of hashmap
