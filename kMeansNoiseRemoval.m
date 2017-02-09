@@ -1,5 +1,12 @@
 function noisyTweets = kMeansNoiseRemoval(data)
-    numOfTweets = length(data);
+% KMEANSNOISREMOVAL Using kmeans with many values of k to cluster a list of
+% tweets, in order to delete tweets that have the least connections to
+% others. More details of the algorithm can be found at 
+% http://meyer.math.ncsu.edu/Meyer/PS_Files/CaseStudyInTextMining.pdf
+% Input: features vector of tweets (rows for tweets, columns for features),
+% Output: The row indices of the input that can be considered noisy tweets.
+
+    numOfTweets = size(data,1);
     concensus = zeros(numOfTweets, numOfTweets);
     kMax = 11;
     kMin = 2;
@@ -18,7 +25,7 @@ function noisyTweets = kMeansNoiseRemoval(data)
     end
     fprintf('\nDone\n');
 
-    fprintf('\nRemoving noisy tweets...\n');
+    fprintf('\nRemoving noisy tweets with kmeans...\n');
     for i = 1:numOfTweets
         for j = 1:numOfTweets
             if concensus(i,j) <= (kMax - kMin + 1)/10

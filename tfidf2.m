@@ -1,4 +1,3 @@
-%%% Modified by Duy Hung Le on 21/12/2016
 function [Y w] = tfidf2( X )
 % FUNCTION applies TF-IDF weighting to word count vector matrix.
 %

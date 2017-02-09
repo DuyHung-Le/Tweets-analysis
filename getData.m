@@ -1,5 +1,5 @@
 function data = getData(fileName)
-% getData take a file as an input and read all data from that file,
+% GETDATA take a file as an input and read all data from that file,
 % do a little bit processing and return a cell containing structured data.
 
     data = readtable(fileName,'ReadVariableNames', false);

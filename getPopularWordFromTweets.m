@@ -1,16 +1,10 @@
-% % Read tweet data and store it in a cell
-% fprintf('Getting tweet data...\n');
-% fileName = 'data/Tweets_2016London.csv';
-% allTweets = getData(fileName);
-% allTweets = allTweets(60:80);
-% 
-% word = getPopularWordFromTweet(allTweets)
 function word = getPopularWordFromTweets(tweets)
-
+% GETPOPULARWORDFROMTWEETS get the most popular words in a number of input
+% tweets
     % Create a matrix to store features of tweets collection. This matrix has
-    % rows as samples (tweets) and columns as features. 2003 is the number of 
-    % words in vocab list, corresponding to 2003 features
-    features = zeros(length(tweets), 2003);  
+    % rows as samples (tweets) and columns as features. 1997 is the number of
+    % words in vocab list, corresponding to 1997 features
+    features = zeros(length(tweets), 1997);
     for i = 1: length(tweets)
         % You may want to comment the displaying of processed tweet in the
         % file processTweet, otherwise command window will be flooded with all

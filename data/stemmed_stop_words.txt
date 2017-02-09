@@ -8,6 +8,7 @@ almost
 also
 am
 among
+amp
 an
 and
 ani
@@ -22,6 +23,7 @@ by
 can
 cannot
 could
+dai
 dear
 did
 do
@@ -66,6 +68,7 @@ neither
 no
 nor
 not
+number
 of
 off
 often
@@ -74,6 +77,7 @@ onli
 or
 other
 our
+out
 own
 rather
 said
@@ -148,6 +152,7 @@ shell
 she
 shouldv
 shouldnt
+thank
 thatll
 that
 there
@@ -155,6 +160,7 @@ theyd
 theyll
 theyr
 theyv
+todai
 wasnt
 wed
 well
